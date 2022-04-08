@@ -49,6 +49,7 @@ function ExpenseForm(props) {
             date: new Date(enteredDate),
         };
 
+        if (!enteredTitle || !enteredAmount) return;
         props.onSaveExpenseData(expenseData);
         setEnteredTitle('');
         setEnteredAmount('');
@@ -60,7 +61,12 @@ function ExpenseForm(props) {
             <div className="new-expense__controls">
                 <div className="new-expense__control">
                     <label>Title</label>
-                    <input type="text" value={enteredTitle} onChange={titleChangeHandler} />
+                    <input
+                        type="text"
+                        value={enteredTitle}
+                        onChange={titleChangeHandler}
+                        placeholder="Enter Title"
+                    />
                 </div>
                 <div className="new-expense__control">
                     <label>Amount</label>
@@ -70,6 +76,7 @@ function ExpenseForm(props) {
                         step="0.01"
                         value={enteredAmount}
                         onChange={amountChangeHandler}
+                        placeholder="Enter amount"
                     />
                 </div>
                 <div className="new-expense__control">
